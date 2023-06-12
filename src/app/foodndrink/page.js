@@ -9,9 +9,16 @@ export default function Home() {
     pickRandomAndRemove(questions.식음료)
   );
 
-  const timer = localStorage.getItem("selectedTimer");
   const [showAnswer, setShowAnswer] = useState(false);
-  const [remainingSeconds, setRemainingSeconds] = useState(timer);
+  const [remainingSeconds, setRemainingSeconds] = useState(15);
+  const [selectedTimer, setSelectedTimer] = useState(15);
+
+  useEffect(() => {
+    let timer;
+    // Get the value from local storage if it exists
+    timer = localStorage.getItem("selectedTimer");
+    setSelectedTimer(timer);
+  }, [remainingSeconds, selectedTimer]);
 
   useEffect(() => {
     if (remainingSeconds > 0) {
@@ -75,7 +82,7 @@ export default function Home() {
               onClick={() => {
                 setQuestion(pickRandomAndRemove(question.newObj));
                 setShowAnswer(false);
-                setRemainingSeconds(timer);
+                setRemainingSeconds(selectedTimer);
               }}
             >
               다음
