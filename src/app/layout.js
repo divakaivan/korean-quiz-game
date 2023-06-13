@@ -60,9 +60,6 @@ export default function RootLayout({ children }) {
                 타이머를 맞추세요
               </h3>
               <div className="max-w-md" id="select" onSubmit={handleSubmit}>
-                <div className="mb-2 block">
-                  <Label htmlFor="seconds" value="seconds" />
-                </div>
                 <Select
                   id="seconds"
                   required
